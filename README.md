@@ -58,14 +58,19 @@ INSERT temperature,machine=unit42,type=assembly external=89,internal=197
 The query consists of Measurement, tags, fields
 
 Measurements = temperature
+
 Tags = machine, type
+
 Fields= external,internal
 
 ## Creating Data pipeline using Apache Nifi
-Access the Nifi user interface using http://<ip>:8086/nifi. Here we are creating two processor groups 
-* Genearte a data and publish as a MQTT topic 
+Access the Nifi user interface using http://ip:8086/nifi. Here we are creating two processor groups 
+* Generate a sample iot data and publish as a MQTT topic 
 * Consume MQTT topic and insert in to influxdb
+![Overview of two Processors ](/processors-nifi.png)
 
-
-### Creating a processor group- Genearte a data and publish as a MQTT topic 
+### Creating a processor group to genearte a sample iot data and publish as a MQTT topic 
+The overall processor group looks like:
+![Overview of two Processors ](/processor1.png)
+The GenerateFile processor can be used to generate a sample iot data, modify the parameters as:
 
