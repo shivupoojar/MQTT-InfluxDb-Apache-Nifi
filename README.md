@@ -69,8 +69,18 @@ Access the Nifi user interface using http://ip:8086/nifi. Here we are creating t
 * Consume MQTT topic and insert in to influxdb
 ![Overview of two Processors ](/processors-nifi.png)
 
-### Creating a processor group to genearte a sample iot data and publish as a MQTT topic 
+### Creating a processor group to generate a sample iot data and publish as a MQTT topic 
 The overall processor group looks like:
 ![Overview of two Processors ](/processor1.png)
-The GenerateFile processor can be used to generate a sample iot data, modify the parameters as:
+
+
+* The GenerateFlowFile processor can be used to generate a sample iot data. 
+Modify the property as Custom Text: external=${random():mod(50):plus(50)},internal=${random():mod(200):plus(150)}
+![GenerateFlowFile ](/GenerateFlowFile.png)
+
+* Publish flowfile through MQTT topic
+Modify the properties:
+Broker URI:tcp://ip:1883,client ID: you can freely choose, Topic:Data
+![GenerateFlowFile ](/PublishMQTT.png)
+
 
