@@ -68,36 +68,36 @@ Access the NiFi user interface using http://ip:8086/nifi. Here we are creating t
 
 * Generate a sample iot data and publish as a MQTT topic 
 * Consume MQTT topic and insert in to influxDB
-![Overview of two Processors ](/processors-nifi.png)
+![Overview of two Processors ](/images/processors-nifi.png)
 
 ### Creating a processor group to generate a sample iot data and publish as a MQTT topic 
 The overall processor group looks like:
-![Overview of two Processors ](/processor1.png)
+![Overview of two Processors ](/images/processor1.png)
 
 
 * The GenerateFlowFile processor can be used to generate a sample iot data. 
 Modify the property:= Custom Text: external=${random():mod(50):plus(50)},internal=${random():mod(200):plus(150)}
-![GenerateFlowFile ](/GenerateFlowFile.png)
+![GenerateFlowFile ](/images/GenerateFlowFile.png)
 
 * Publish flowfile through MQTT topic
 Modify the properties:=
 Broker URI:tcp://ip:1883,client ID: you can choose freely , Topic:Data
-![GenerateFlowFile ](/PublishMQTT.png)
+![GenerateFlowFile ](/images/PublishMQTT.png)
 
 ### Creating a processor group to consume MQTT topic and insert into Inlfuxdb 
 
 * ConsumeMQTT processor can be used to consume the MQTT topic. Modify the following properties such as Broker URL:tcp://ip:1883,client ID: you can choose freely , Topic:Data
 
-![ConsumeMQTT ](/ConsumeMQTT.png)
+![ConsumeMQTT ](/images/ConsumeMQTT.png)
 
 * Format the data according to the line protocol structure of influxDB.
 We are using ReplaceText processor to append the measurement name, tag values to flowfile recieved in the pipeline.
 
-![ReplaceText ](/ReplaceText.png)
+![ReplaceText ](/images/ReplaceText.png)
 
 * PutInfluxdb processor can be used to insert data in to influxdb and modify the properties such as Database name:iot, Influxdb connection URL: http://ip:8086
 
-![Influxdb ](/influxdb.png)
+![Influxdb ](/images/influxdb.png)
 
 
 
