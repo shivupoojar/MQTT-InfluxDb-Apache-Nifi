@@ -1,5 +1,5 @@
 
-# Storing an IoT data into InlfuxDB database server using Apache NiFi
+# Storing an IoT data into InfluxDB database server using Apache NiFi
 
 Th objective of the project is to collect the IoT sensed data from sensors using light weight MQTT protocol and insert into InfluxDB time series database using Apache NiFi processors.
  The following are the requirements to run the project:
