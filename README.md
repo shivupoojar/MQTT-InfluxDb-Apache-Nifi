@@ -1,5 +1,5 @@
 
-# Storing a IoT data into InlfuxDb database using Apache Nifi
+# Storing an IoT data into InlfuxDb database using Apache Nifi
 
 Th objective of the project is to collect the IoT sensed data from sensors using light weight MQTT protocol and insert into InfluxDb time series database using Apache Nifi processors.
  The following are the requirements to run the project:
@@ -86,14 +86,17 @@ Broker URI:tcp://ip:1883,client ID: you can choose freely , Topic:Data
 ### Creating a processor group to consume MQTT topic and insert into Inlfuxdb 
 
 * ConsumeMQTT processor can be used to consume the MQTT topic. Modify the following properties sych as Broker URI:tcp://ip:1883,client ID: you can choose freely , Topic:Data
-![GenerateFlowFile ](/ConsumeMQTT.png)
-* Format the data according to the line protocol structure of influxdb.
 
-We are using ReplaceText processor to append the measurement name, tag values to flowfile recived in the pipeline.
-![GenerateFlowFile ](/ReplaceText.png)
+![ConsumeMQTT ](/ConsumeMQTT.png)
+
+* Format the data according to the line protocol structure of influxdb.
+We are using ReplaceText processor to append the measurement name, tag values to flowfile recieved in the pipeline.
+
+![ReplaceText ](/ReplaceText.png)
 
 * PutInfluxdb processor can be used to insert data in to influxdb and modify the properties such as Database name:iot, Influxdb connection URL: http://ip:8086
-![GenerateFlowFile ](/influxdb.png)
+
+![Influxdb ](/influxdb.png)
 
 
 
