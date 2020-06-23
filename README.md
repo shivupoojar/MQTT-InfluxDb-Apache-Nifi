@@ -80,7 +80,20 @@ Modify the property as Custom Text: external=${random():mod(50):plus(50)},intern
 
 * Publish flowfile through MQTT topic
 Modify the properties:
-Broker URI:tcp://ip:1883,client ID: you can freely choose, Topic:Data
+Broker URI:tcp://ip:1883,client ID: you can choose freely , Topic:Data
 ![GenerateFlowFile ](/PublishMQTT.png)
+
+### Creating a processor group to consume MQTT topic and insert into Inlfuxdb 
+
+* ConsumeMQTT processor can be used to consume the MQTT topic. Modify the following properties sych as Broker URI:tcp://ip:1883,client ID: you can choose freely , Topic:Data
+![GenerateFlowFile ](/ConsumeMQTT.png)
+* Format the data according to the line protocol structure of influxdb.
+
+We are using ReplaceText processor to append the measurement name, tag values to flowfile recived in the pipeline.
+![GenerateFlowFile ](/ReplaceText.png)
+
+* PutInfluxdb processor can be used to insert data in to influxdb and modify the properties such as Database name:iot, Influxdb connection URL: http://ip:8086
+![GenerateFlowFile ](/influxdb.png)
+
 
 
